@@ -87,7 +87,6 @@ public class SimpleLinkedList<T>
          * by next.
          */
         Node cursor = SimpleLinkedList.this.front;
-
         /**
          * The position in the list. (Included because the folks 
          * at Sun/Oracle decided that list iterators need to be 
@@ -146,8 +145,12 @@ public class SimpleLinkedList<T>
         public boolean hasPrevious()
         {
           failFast();
-          // STUB
-          return false;
+          if (previousIndex() < 0){
+            return false;
+          }
+          else{
+            return true; 
+          }
         } // hasPrevious()
 
         public T next()
@@ -179,10 +182,16 @@ public class SimpleLinkedList<T>
           throws NoSuchElementException
         {
           failFast();
-          if (!this.hasPrevious())
+          if (!this.hasPrevious()) {
             throw new NoSuchElementException();
-          // STUB
-          return null;
+          } 
+            Node prevNode = SimpleLinkedList.this.front;
+              for(int i = 0; i < this.pos; i++){
+                prevNode = prevNode.next;
+              }
+              this.cursor = prevNode;
+            this.pos--;  
+            return prevNode.data;
         } // previous()
 
         public void remove()
@@ -206,8 +215,7 @@ public class SimpleLinkedList<T>
             IllegalStateException
         {
           failFast();
-          // STUB
-          throw new UnsupportedOperationException();
+          cursor.data = val;
         } // set(T)
       };
   } // listIterator()

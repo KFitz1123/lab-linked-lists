@@ -11,6 +11,15 @@ public class SLLExpt
     throws Exception
   {
     PrintWriter pen = new PrintWriter(System.out, true);
-    SimpleListExpt.expt(pen, new SimpleLinkedList<String>());
+    SimpleLinkedList<String> vm = new SimpleLinkedList<String>();
+    SimpleListExpt.add(pen, vm, 
+            new String[] { "Hey", "Where", "Did", "We", "Go?" });
+    SimpleListExpt.setForwardExpt(pen, vm);
+
+    SimpleListExpt.prevExpt(pen, new SimpleLinkedList<String>());
+
+    SimpleListExpt.addToEnd(pen, vm, 
+            new String[] { "Days", "When", "The", "Rain", "Came" });
+            SimpleListExpt.setBackwardExpt(pen, vm);
   } // main(String[]
 } // SLLExpt

@@ -171,6 +171,7 @@ public class SimpleListExpt
     while (lit.hasPrevious())
       {
         String str = lit.previous();
+        System.out.println(str);
         lit.set(str.toLowerCase());
       } // while
     printList(pen, lst);
